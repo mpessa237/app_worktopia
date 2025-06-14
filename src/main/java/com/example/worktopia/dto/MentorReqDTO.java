@@ -1,42 +1,27 @@
-package com.example.worktopia.entity;
-import jakarta.persistence.*;
+package com.example.worktopia.dto;
+
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotEmpty;
 import lombok.AllArgsConstructor;
-import lombok.Getter;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 
-import java.util.Date;
-
-@Entity
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Getter
-@Setter
-@Table(name = "mentor")
-public class Mentor {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer mentorId;
-    @Column(nullable = false)
+public class MentorReqDTO {
+    @NotEmpty(message = "le nom est obligatoire")
+    @NotBlank(message = "le nom est obligatoire")
     private String nom;
     private String prenom;
     private String telephone;
+    @NotEmpty(message = "l'email est obligatoire")
+    @NotBlank(message = "l'email est obligatoire")
     private String email;
     private String domaine;
     private String bibliographie;
-    @Temporal(TemporalType.DATE)
-    private Date createdAt;
-    @Temporal(TemporalType.DATE)
-    private Date updatedAt;
 
-    public Integer getMentorId() {
-        return mentorId;
-    }
-
-    public void setMentorId(Integer mentorId) {
-        this.mentorId = mentorId;
-    }
 
     public String getNom() {
         return nom;
@@ -86,19 +71,6 @@ public class Mentor {
         this.bibliographie = bibliographie;
     }
 
-    public Date getCreatedAt() {
-        return createdAt;
-    }
 
-    public void setCreatedAt(Date createdAt) {
-        this.createdAt = createdAt;
-    }
 
-    public Date getUpdatedAt() {
-        return updatedAt;
-    }
-
-    public void setUpdatedAt(Date updatedAt) {
-        this.updatedAt = updatedAt;
-    }
 }

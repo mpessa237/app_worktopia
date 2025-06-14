@@ -1,28 +1,19 @@
-package com.example.worktopia.entity;
+package com.example.worktopia.dto;
 
-import jakarta.persistence.*;
+
+import jakarta.persistence.Column;
 import jakarta.validation.constraints.NotEmpty;
 import lombok.AllArgsConstructor;
-import lombok.Getter;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 import org.hibernate.validator.constraints.Length;
 
-@Entity
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Getter
-@Setter
-@Table(name = "Competency")
-public class Competency {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class CompetenceRespDTO {
     private Integer CompetencyId;
-    @NotEmpty(message = "le nom est obligatoire")
-    @Column(nullable = false)
-    @NotEmpty(message = "ce champs ne doit pas être vide")
-    @Length(min = 3, message = "ce champs doit contenir au moin 3 caractère")
-    private String name;
+    private String nom;
     private String description;
 
     public Integer getCompetencyId() {
@@ -33,12 +24,12 @@ public class Competency {
         CompetencyId = competencyId;
     }
 
-    public String getName() {
-        return name;
+    public String getNom() {
+        return nom;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setNom(String nom) {
+        this.nom = nom;
     }
 
     public String getDescription() {
@@ -49,7 +40,3 @@ public class Competency {
         this.description = description;
     }
 }
-
-
-
-
